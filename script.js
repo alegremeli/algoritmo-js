@@ -1,4 +1,4 @@
-function preguntar(ultimaVez){
+function preguntar(ultimaVez) {
     let n
     let repetir = true
 
@@ -9,13 +9,13 @@ function preguntar(ultimaVez){
         } else {
             repetir = false
         }
-    } while(repetir == true)
+    } while (repetir == true)
 
     for (let i = 0; i < n; i = i + 1) { // Me aseguro de que el ciclo se repita n veces.
         alert(`El producto ${i+1} se ingresó al carrito`)
     }
 
-    do{
+    do {
         if (ultimaVez == "no") {
             alert("¡Gracias por su compra!\nPasamos al siguiente cliente.")
         } else if (ultimaVez == "si") {
@@ -26,6 +26,7 @@ function preguntar(ultimaVez){
         }
     } while (ultimaVez != "no" && ultimaVez != "si")
 }
+
 
 preguntar("no") // Esto es para indicarle al simulador que hay más clientes en la lista de espera
 preguntar("si")

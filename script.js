@@ -1,32 +1,62 @@
-function preguntar(ultimaVez) {
-    let n
-    let repetir = true
+let carrito = [] //Creo un array vacío, que se ira completando con los productos.
 
-    do {
-        n = parseInt(prompt("Ingrese la cantidad de productos que desea comprar")) // Pide un número, cantidad de productos.
-        if (isNaN(n)) {
-            alert("Por favor, ingrese un número válido") // Si el usuario ingresa otra cosa que no sea un número, envio una alerta.
-        } else {
-            repetir = false
-        }
-    } while (repetir == true)
-
-    for (let i = 0; i < n; i = i + 1) { // Me aseguro de que el ciclo se repita n veces.
-        alert(`El producto ${i+1} se ingresó al carrito`)
-    }
-
-    do {
-        if (ultimaVez == "no") {
-            alert("¡Gracias por su compra!\nPasamos al siguiente cliente.")
-        } else if (ultimaVez == "si") {
-            alert("¡Gracias por su compra!.\nSimulador terminado.")
-        } else {
-            alert("Error: el parámetro ingresado no es correcto")
-            ultimaVez = prompt("Hay más clientes después de usted? (si/no)").toLowerCase()
-        }
-    } while (ultimaVez != "no" && ultimaVez != "si")
+let producto1 = {
+    nombre : "Budín",
+    precio : 400
 }
 
+let producto2 = {
+    nombre : "Muffin",
+    precio : 200
+}
 
-preguntar("no") // Esto es para indicarle al simulador que hay más clientes en la lista de espera
-preguntar("si")
+let producto3 = {
+    nombre : "Torta",
+    precio : 1000
+}
+
+let producto4 = {
+    nombre : "Donas",
+    precio : 500
+}
+
+let productos = [producto1, producto2, producto3, producto4]
+let nombreProductos = "" 
+
+for(let i=0; i<productos.length; i=i+1) { 
+    nombreProductos = nombreProductos + productos[i].nombre + "/"
+}
+
+function elegir() { // Sólo funciona si los productos ingresados están bien escritos
+    let eleccion = prompt(`Que producto desea agregar?\n${nombreProductos.slice(0, -1)}`)
+
+    for(let i=0; i<productos.length; i=i+1) {
+        if (productos[i].nombre == eleccion) {  //Retorna el producto elegido.
+            carrito.push(productos[i])
+        }
+    }
+}
+
+let repetir
+
+do{  // Sólo funciona si en el prompt se responde "si" o "no" 
+    elegir()
+    
+    let respuesta = prompt("¿Desea agregar otro producto? (si/no)") 
+    
+    if(respuesta == "si") {
+        repetir = true
+    } else if (respuesta == "no") {
+        repetir = false
+    }
+}while(repetir)
+
+console.log(carrito)
+
+let textoDelCarrito = ""
+
+for(let i=0; i<carrito.length; i=i+1) { //Retorna el nombre del producto y su valor.
+    textoDelCarrito = textoDelCarrito + `\nEl producto N°${i+1} es ${carrito[i].nombre}, y vale $${carrito[i].precio}\n`
+}
+
+alert(textoDelCarrito)

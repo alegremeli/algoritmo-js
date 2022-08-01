@@ -31,7 +31,7 @@ function elegir() { // Sólo funciona si los productos ingresados están bien es
     let eleccion = prompt(`Que producto desea agregar?\n${nombreProductos.slice(0, -1)}`)
 
     for(let i=0; i<productos.length; i=i+1) {
-        if (productos[i].nombre == eleccion) {  //Retorna el producto elegido.
+        if (productos[i].nombre == eleccion) { 
             carrito.push(productos[i])
         }
     }
@@ -44,9 +44,9 @@ do{  // Sólo funciona si en el prompt se responde "si" o "no"
     
     let respuesta = prompt("¿Desea agregar otro producto? (si/no)") 
     
-    if(respuesta == "si") {
+    if(respuesta == "si") { //Vuelve al principio.
         repetir = true
-    } else if (respuesta == "no") {
+    } else if (respuesta == "no") { //Retorna el nombre del producto y su valor.
         repetir = false
     }
 }while(repetir)

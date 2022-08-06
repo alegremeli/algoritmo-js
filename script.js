@@ -32,20 +32,18 @@ console.log(ofertas)
 let productosSinTacc = productos.filter((el) => el.tipo.includes('sinTacc')) //Filtra entre los productos dependiendo su tipo.
 console.log(productosSinTacc)
 
-alert("Bienvenid@s!") //Mensaje de bienvenida para el usuario.
-
 let nombreProductos = ""
 
-for (let i = 0; i < productos.length; i = i + 1) {
-    nombreProductos = nombreProductos + productos[i].nombre + "/"
+for (let elemento of productos) {
+    nombreProductos = nombreProductos + elemento.nombre + "/"
 }
 
 function elegir() { // Sólo funciona si los productos ingresados están bien escritos
     let eleccion = prompt(`Que producto desea agregar?\n${nombreProductos.slice(0, -1)} \n Budínes y Donas sin Tacc. Muffins veganos. :)`)
 
-    for (let i = 0; i < productos.length; i = i + 1) {
-        if (productos[i].nombre == eleccion) {
-            carrito.push(productos[i])
+    for (let elemento of productos) {
+        if (elemento.nombre == eleccion) {
+            carrito.push(elemento)
         }
     }
 }
@@ -66,10 +64,10 @@ do { // Sólo funciona si en el prompt se responde "si" o "no"
 
 console.log(carrito)
 
-let textoDelCarrito = ""
-
-for (let i = 0; i < carrito.length; i = i + 1) { //Retorna el nombre del producto y su valor.
-    textoDelCarrito = textoDelCarrito + `\nEl producto N°${i+1} es ${carrito[i].nombre}, y vale $${carrito[i].precio}\n`
+let i = 1 // Reemplacé los tres for tradicionales por for...of
+for (let producto of carrito) { //Retorna el nombre del producto y su valor.
+    let compra = document.createElement("div");
+    compra.innerHTML = `<h2>El producto elegido N°${i} es ${producto.nombre}, y vale $${producto.precio}</h2>`;
+    document.body.appendChild(compra);
+    i = i + 1
 }
-
-alert(textoDelCarrito)

@@ -1,0 +1,13 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.listaCartas {
+    display: flex;
+    flex-direction: row;
+}
+
+.bordeCartas {
+    border: 2px solid black;
+}

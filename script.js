@@ -1,11 +1,8 @@
-let carrito = {elementosCarrito : ""} //Creo un array vacío, que se ira completando con los productos.
+// Optimicé el if/else anterior convirtiendolo en un operador ternario
+localStorage.getItem("claveCarrito") ? document.getElementById("carrito").innerHTML = JSON.parse(localStorage.getItem("claveCarrito")).elementosCarrito : localStorage.setItem("claveCarrito", JSON.stringify({elementosCarrito : ""}))
 
-if (localStorage.getItem("claveCarrito")) {
-    carrito = JSON.parse(localStorage.getItem("claveCarrito")) // Si existe un objeto con clave "claveCarrito", lo obtiene
-    document.getElementById("carrito").innerHTML = carrito.elementosCarrito // Agregamos al div con id "carrito" el carrito en formato HTML guardado en localstorage
-} else {
-    localStorage.setItem("claveCarrito", JSON.stringify(carrito)) // Si no existe, lo crea
-}
+// Sabemos que después del if/else el objeto con clave "claveCarrito" ya está creado así que lo llamo y guardo en una variable llamada "carrito"
+let carrito = JSON.parse(localStorage.getItem("claveCarrito"))
 
 let producto1 = {
     nombre: "Budín",
@@ -31,8 +28,7 @@ let producto4 = {
     tipo: "Sin Tacc"
 }
 
-let productos = [producto1, producto2, producto3, producto4]    
-
+let productos = [producto1, producto2, producto3, producto4] 
 
 //Creo las cards de todos los productos que tenga, de manera general.
 productos.forEach((producto, i) => {
@@ -59,11 +55,11 @@ productos.forEach((producto, i) => {
 //puede agregarlo a su carrito.
 
 let botonCartas
+let divCarrito = document.getElementById("carrito") // Saqué el divCarrito para poder usarlo más adelante
 
 productos.forEach((producto, i) => {
     botonCartas = document.getElementById(`botonCarta${i+1}`)
     botonCartas.addEventListener("click", () => {
-        let divCarrito = document.getElementById("carrito")
         divCarrito.innerHTML += `
         <div class="card-body bordeCartas">
             <h5 class="card-title">${producto.nombre}</h5>
@@ -81,6 +77,13 @@ productos.forEach((producto, i) => {
         `
 
         localStorage.setItem("claveCarrito", JSON.stringify(carrito))
-
     })
+})
+
+let botonComprar = document.getElementById("botonComprar")
+
+botonComprar.addEventListener("click", () => { // Defino el comportamiento del botón con id"botonComprar"
+    divCarrito.innerHTML = ""  // Borra el carrito del HTML
+    carrito = {elementosCarrito : ""} // Redefine la variable "carrito"
+    localStorage.setItem("claveCarrito", JSON.stringify(carrito)) // Redefinimos el objeto con clave "claveCarrito"
 })

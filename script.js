@@ -1,5 +1,7 @@
 // Optimicé el if/else anterior convirtiendolo en un operador ternario
-localStorage.getItem("claveCarrito") ? document.getElementById("carrito").innerHTML = JSON.parse(localStorage.getItem("claveCarrito")).elementosCarrito : localStorage.setItem("claveCarrito", JSON.stringify({elementosCarrito : ""}))
+localStorage.getItem("claveCarrito") ? document.getElementById("carrito").innerHTML = JSON.parse(localStorage.getItem("claveCarrito")).elementosCarrito : localStorage.setItem("claveCarrito", JSON.stringify({
+    elementosCarrito: ""
+}))
 
 // Sabemos que después del if/else el objeto con clave "claveCarrito" ya está creado así que lo llamo y guardo en una variable llamada "carrito"
 let carrito = JSON.parse(localStorage.getItem("claveCarrito"))
@@ -28,7 +30,7 @@ let producto4 = {
     tipo: "Sin Tacc"
 }
 
-let productos = [producto1, producto2, producto3, producto4] 
+let productos = [producto1, producto2, producto3, producto4]
 
 //Creo las cards de todos los productos que tenga, de manera general.
 productos.forEach((producto, i) => {
@@ -42,7 +44,7 @@ productos.forEach((producto, i) => {
             <h6 class="card-subtitle mb-2 text-muted">$${producto.precio}</h6>
             <p class="card-text">${producto.tipo}</p>
         </div>
-        <button id="botonCarta${i+1}" type="button" class="btn btn-primary">Agregar</button>
+        <button id="botonCarta${i+1}" type="button" class="btn btn-secondary">Agregar</button>
     </div>
     `
 
@@ -65,6 +67,7 @@ productos.forEach((producto, i) => {
             <h5 class="card-title">${producto.nombre}</h5>
             <h6 class="card-subtitle mb-2 text-muted">$${producto.precio}</h6>
             <p class="card-text">${producto.tipo}</p>
+            <button id="botonEliminar${i+1}" type="button" class="btn btn-secondary">🗑️</button>
         </div>
         `
         // Esto actualiza el objeto con clave "claveCarrito" guardado en el localstorage
@@ -73,17 +76,50 @@ productos.forEach((producto, i) => {
             <h5 class="card-title">${producto.nombre}</h5>
             <h6 class="card-subtitle mb-2 text-muted">$${producto.precio}</h6>
             <p class="card-text">${producto.tipo}</p>
+            <button id="botonEliminar${i+1}" type="button" class="btn btn-secondary">🗑️</button>
         </div>
         `
 
         localStorage.setItem("claveCarrito", JSON.stringify(carrito))
+
+        Toastify({ //   Alerta 
+            text: "Agregado al carrito",
+            duration: 3000,
+            gravity: 'top',
+            position: 'right',
+            style: {
+                background: '#f3969a'
+            }
+        }).showToast();
     })
 })
+
+
+
 
 let botonComprar = document.getElementById("botonComprar")
 
 botonComprar.addEventListener("click", () => { // Defino el comportamiento del botón con id"botonComprar"
-    divCarrito.innerHTML = ""  // Borra el carrito del HTML
-    carrito = {elementosCarrito : ""} // Redefine la variable "carrito"
-    localStorage.setItem("claveCarrito", JSON.stringify(carrito)) // Redefinimos el objeto con clave "claveCarrito"
+    Swal.fire({
+        title: '¿Está seguro de confirmar la compra?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, seguro',
+        cancelButtonText: 'No, no quiero'
+    }).then((result) => {
+
+        if (result.isConfirmed) { //Si el usuario acepta, finalizamos la compra
+            Swal.fire({
+                title: 'Compra exitosa',
+                icon: 'success',
+            })
+            divCarrito.innerHTML = "" // Borra el carrito del HTML
+            carrito = {
+                elementosCarrito: ""
+            } // Redefine la variable "carrito"
+            localStorage.setItem("claveCarrito", JSON.stringify(carrito)) // Redefinimos el objeto con clave "claveCarrito"        
+        }
+    })
+
+
 })

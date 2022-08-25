@@ -123,3 +123,19 @@ botonComprar.addEventListener("click", () => { // Defino el comportamiento del b
 
 
 })
+
+const divPerros = document.getElementById("divPerros")
+function mostrarPerros() {
+    fetch("https://dog.ceo/api/breeds/image/random")
+    .then(response => response.json())
+    .then(({message}) => {
+        divPerros.innerHTML = `
+            <div>
+                <h3>Perritos de la Tienda</h2>
+                <p>c: ${message}</p>
+
+            <div>
+        `
+    })
+}
+mostrarPerros()

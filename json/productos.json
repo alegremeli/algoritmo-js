@@ -1,0 +1,65 @@
+[
+    {
+        "id" : 1,
+        "nombre": "Jean",
+        "precio": 500,
+        "img" : "bordadojean.webp",
+        "stock" : 5
+    },
+
+    {
+        "id" : 2,
+        "nombre": "Rei",
+        "precio": 500,
+        "img" : "bordadorei.webp",
+        "stock" : 6
+    },
+
+    {   
+        "id" : 3,
+        "nombre": "Deku",
+        "precio": 500,
+        "img" : "bordadodeku.webp",
+        "stock" : 7
+    },
+
+    {
+        "id" : 4,
+        "nombre": "Misato",
+        "precio": 500,
+        "img" : "bordadomisato.webp",
+        "stock" : 4
+    },
+
+    {
+        "id" : 5,
+        "nombre": "Oikawa",
+        "precio": 500,
+        "img" : "bordadototo.webp",
+        "stock" : 8
+    },
+
+    {   
+        "id" : 6,
+        "nombre": "Manjiro",
+        "precio": 500,
+        "img" : "bordadotokyo.webp",
+        "stock" : 4
+    },
+
+    {   
+        "id" : 7,
+        "nombre": "Sailor Moon",
+        "precio": 500,
+        "img" : "bordadosailor.webp",
+        "stock" : 4
+    },
+
+    {   
+        "id" : 8,
+        "nombre": "Kakashi",
+        "precio": 500,
+        "img" : "bordadokakashi.webp",
+        "stock" : 2
+    }
+]

@@ -4,40 +4,66 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://bootswatch.com/5/minty/bootstrap.min.css" >
+    <link rel="stylesheet" href="https://bootswatch.com/5/minty/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="stylesheet" href="./css/style.css">
     <title>Lo de Cata</title>
 </head>
 
 <body>
-    <div >
-        <h1>♥ Bienvenidos a la pastelería Lo de Cata ♥</h1>
-        <p>Elegí nuestras deliciosas recetas, todos nuestros productos son hechos en el día. Los hacemos con paciencia y
-            mucho cariño, sabemos que lo bueno se hace esperar.</p>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbarColor03">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">BORDADOGS
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Bordados de anime hechos a mano</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div>
+        <h1>Nuestros diseños disponibles</h1>
+        <div id="cartas" class="listaCartas"></div>
     </div>
 
     <div>
-        <h2>¿Qué producto desea agregar al carrito?</h2>
-        <div id="cartas" class="listaCartas">
+        <h3 class="carritoTitulo">Carrito</h3>
+        <div id="carrito" class="listaCartas"></div>
 
-        </div>
-    </div>
-
-    <div>
-        <h2>Carrito</h2>
-        <div id="carrito" class="listaCartas">
-        </div>
-        
         <section>
             <div>
-                <button id="botonComprar" type="button" class="btn btn-secondary">Comprar</button>
+                <button id="borrarCarrito" type="button" class="btn btn-secondary botones">Eliminar carrito</button>
+            </div>
+            <div>
+                <button id="botonComprar" type="button" class="btn btn-secondary botones">Comprar</button>
             </div>
         </section>
-
     </div>
 
-    <div id="divPerros"></div>
+    <footer id="pie">
+
+        <div>
+            <a class="imgFooter" href="https://es-la.facebook.com/">
+                <img src="https://img.icons8.com/dusk/50/000000/facebook--v1.png" />
+            </a>
+
+            <a class="imgFooter" href="https://www.instagram.com/">
+                <img src="https://img.icons8.com/dusk/50/000000/instagram--v1.png" />
+            </a>
+
+            <a class="imgFooter" href="https://ar.pinterest.com/">
+                <img src="https://img.icons8.com/dusk/50/000000/pinterest--v1.png" />
+            </a>
+
+        </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
